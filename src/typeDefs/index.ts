@@ -8,5 +8,4 @@ const typesArray = loadFilesSync(path.join(__dirname, "."), {
     recursive: true
 })
 
-
 export default mergeTypeDefs([...typesArray, ...scalarTypeDefs]);

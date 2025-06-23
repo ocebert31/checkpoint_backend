@@ -1,0 +1,15 @@
+import { IDataParser, IEntity, IFixture } from './interface';
+import { DataSource } from 'typeorm';
+export declare class Builder {
+    private readonly dataSource;
+    private readonly parser;
+    private readonly ignoreDecorators;
+    entities: any;
+    private processorCache;
+    constructor(dataSource: DataSource, parser: IDataParser, ignoreDecorators: boolean);
+    private callExecutors;
+    private buildEntity;
+    build(fixture: IFixture): Promise<IEntity>;
+    private getProcessorInstance;
+    private createProcessorInstance;
+}
