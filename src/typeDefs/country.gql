@@ -1,0 +1,14 @@
+type Country {
+    id: ID!
+    code: String!
+    name: String!
+    emoji: String!
+}
+
+type Mutation {
+    addCountry(code: String!, name: String!, emoji: String!): Country!
+}
+
+type Query {
+    countries: [Country!]!
+}

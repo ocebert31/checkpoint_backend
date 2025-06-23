@@ -1,17 +1,8 @@
 import { ApolloServer } from "@apollo/server";
 import { startStandaloneServer } from "@apollo/server/standalone";
-
-const typeDefs = `
-  type Query {
-    hello: String
-  }
-`;
-
-const resolvers = {
-  Query: {
-    hello: () => "Hello World !",
-  },
-};
+import { AppDataSource } from "./lib/datasource";
+import resolvers from "./resolvers";
+import typeDefs from "./typeDefs";
 
 const server = new ApolloServer({
   typeDefs,
@@ -25,5 +16,12 @@ async function main() {
 
   console.log(`🚀 Le serveur Apollo démarre sur ${url}`);
 }
+
+async function testDB() {
+  await AppDataSource.initialize();
+  console.log("DB connectée avec succès !");
+}
+
+testDB();
 
 main();
